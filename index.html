@@ -1,22 +1,20 @@
 <html>
   <body>
     <div id="app"></div>
-    <script type="text/javascript">
-        // Select the div element with 'app' id
+
+    <!-- React scripts from unpkg.com, enables react and react-dom for react to be used with the DOM -->
+
+    <script src="https://unpkg.com/react@18/umd/react.development.js"></script>
+    <script src="https://unpkg.com/react-dom@18/umd/react-dom.development.js"></script>
+
+    <!-- Add babel script to compile the JSX back to regular javascript.-->
+    <script src="https://unpkg.com/@babel/standalone/babel.min.js"></script>
+
+    <!-- changed the type so that JSX can be used in the script tag -->
+    <script type="text/jsx">
         const app = document.getElementById('app')
-
-        // Create a new H1 element
-        const header = document.createElement('h1')
-
-        // Crete a new text node for the H1 element
-        const text = 'Develop. Preview. Ship'
-        const headerContent = document.createTextNode(text)
-
-        // Append the text to the H1 element
-        header.appendChild(headerContent)
-
-        // Place the H1 element inside the div
-        app.appendChild(header)
+        const root = ReactDOM.createRoot(app)
+        root.render(<h1>Develop. Preview. Ship.</h1>)
 
     </script>
   </body>
