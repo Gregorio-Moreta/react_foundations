@@ -14,15 +14,58 @@
     <script type="text/jsx">
         const app = document.getElementById('app')
 
-        function Header() {
-            return (<h1>Develop. Preview. Ship</h1>)
+        function createTitle(title) {
+            if (title) {
+                return title
+            } else {
+                return 'default title'
+            }
+        }
+
+        function Header({ title }) {
+            console.log(title)
+            return (
+                <h1>
+                    { createTitle(title) }
+                </h1>
+            )
+        }
+
+        function TernaryHeader( { ternary } ) {
+            console.log(ternary)
+            return (
+                <h1>
+                    { ternary ? ternary : 'default Ternary Value' }
+                </h1>
+            )
         }
 
         function HomePage() {
+            const names = ['Ada Lovelace', 'Grace Hopper', 'Margaret Hamilton']
+
             return (
                 <div>
                     {/* Nesting the Header compenent */}
+                    <Header title="React almost Next" />
+
+                    {/* I can change the title value or not include it and cause the props to render whatever value I pass, same for the TernaryHeader example component and ternary prop below */}
+
                     <Header />
+
+
+                    <TernaryHeader ternary="This string will render based on the ternary value"/>
+                    <TernaryHeader />
+
+                    {/* Iterators */}
+
+                    <ul>
+                        {names.map((name) => (
+                            <li key = {name} >
+                                { name }
+                            </li>
+                        ))
+                    }
+                    </ul>
                 </div>
             )
         }
